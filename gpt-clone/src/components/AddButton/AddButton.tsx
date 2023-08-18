@@ -11,24 +11,24 @@ interface AddButtonProps {
   onClick?: () => void;
 }
 
-export const AddButton: React.FC<AddButtonProps> = ({ text, width = '100%', height = '40px', color = '', textColor = 'white', fontSize = '14px', onClick }) => {
+export const AddButton: React.FC<AddButtonProps> = ({ text, width = '100%', height = '34px', color = '', textColor = 'white', fontSize = '13px', onClick }) => {
   const [hover, setHover] = useState(false);
 
   const buttonStyle = {
     width: width,
     height: height,
-    backgroundColor: hover ? '#000' : color,
-    color: hover ? '#fff' : textColor,
+    backgroundColor: hover ? '#F8F8F8' : color,
+    color: hover ? 'black' : textColor,
     fontSize: fontSize,
     fontWeight: 'bold',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    transition: 'background-color 0.5s ease, color 0.5s ease',
+    transition: 'background-color 0.2s ease, color 0.2s ease',
   };
 
   const textStyle = {
-    marginLeft: '14px',
+    marginLeft: '10px',
   };
 
   return (

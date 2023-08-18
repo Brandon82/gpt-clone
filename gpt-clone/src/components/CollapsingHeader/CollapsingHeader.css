@@ -1,0 +1,11 @@
+.collapsing-header {
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .collapsing-header-title {
+    cursor: pointer;
+  }
+  
+  .collapsing-header-body {
+  }
