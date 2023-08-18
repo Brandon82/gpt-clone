@@ -1,11 +1,36 @@
 .collapsing-header {
-    border-radius: 4px;
     overflow: hidden;
-  }
+}
   
-  .collapsing-header-title {
+.collapsing-header-title {
+    border-radius: 6px;
+    padding: 2px 4px 2px 2px;
+    position: relative;
     cursor: pointer;
-  }
-  
-  .collapsing-header-body {
-  }
+    transition: background-color 0.3s;
+}
+
+.collapsing-header-body{
+    padding: 2px;
+}
+
+.collapsing-header-title .arrow::before {
+    content: 'ᐯ';
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.collapsing-header-title.collapsed .arrow::before {
+    transform: rotate(-90deg);
+}
+
+.collapsing-header-title.expanded .arrow::before {
+    transform: rotate(0deg);
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%;
+}

@@ -6,7 +6,7 @@
 :root {
   --text-color: rgba(255, 255, 255, 0.87);
   --main-bg-color: #1a1a1a;
-  --child-bg-color: #474f57;
+  --child-bg-color: #3f4250;
 
   color: var(--text-color);
   background-color: var(--main-bg-color);
@@ -23,6 +23,10 @@ div {
   //border: 1px solid red;
 }
 
+* {
+  //border: 1px solid red;
+}
+
 .App {
   display: flex;
   height: 100vh;
@@ -31,8 +35,11 @@ div {
 .sidepane{
   min-width: 220px;
   margin: 18px 0 14px 0;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   border-radius: 10px;
+}
+.sidepane > * {
+  margin-bottom: 0.7rem;
 }
 
 .chatpane {

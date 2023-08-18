@@ -16,8 +16,11 @@ export const CollapsingHeader: React.FC<CollapsingHeaderProps> = ({ title, isCol
 
   return (
     <div className="collapsing-header">
-      <div className="collapsing-header-title" onClick={toggleCollapse}>
-        {title}
+      <div className={`collapsing-header-title ${collapsed ? 'collapsed' : 'expanded'}`} onClick={toggleCollapse}>
+        <h4 className="title-container">
+          <span>{title}</span>
+          <span className="arrow"></span>
+        </h4>
       </div>
       {!collapsed && <div className="collapsing-header-body">{children}</div>}
     </div>

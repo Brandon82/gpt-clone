@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { GPTContext } from '../state/GPTContext';
+import { TextInput } from './TextInput/TextInput';
 
 // ChatBox Component
 export const ChatPane: React.FC = () => {
@@ -8,7 +9,7 @@ export const ChatPane: React.FC = () => {
   return (
     <div className="chatpane">
       <h3>chatpane</h3>
-
+      <TextInput placeholder="Type a message..." />
     </div>
   );
 }

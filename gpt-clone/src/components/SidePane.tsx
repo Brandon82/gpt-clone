@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { GPTContext } from '../state/GPTContext';
-import { AddButton } from './AddButton/AddButton';
+import { Button } from './Button/Button';
 import { CollapsingHeader } from './CollapsingHeader/CollapsingHeader';
+import { SideBarStack } from './SideBarStack';
+import { FaPlus } from 'react-icons/fa';
 
 // SidePane Component
 export const SidePane: React.FC = () => {
@@ -9,11 +11,15 @@ export const SidePane: React.FC = () => {
 
   return (
     <div className="sidepane">
-      <h3>GPT-Clone</h3>
-      <AddButton text="New Conversation" />
+      <h2>GPT-Clone</h2>
+      <Button buttonText="New Conversation" icon={<FaPlus />} />
       <CollapsingHeader title="Chat History" isCollapsed={false}>
-        <p>This is the body of the header.</p>
+        <p>Chat one</p>
+        <p>Chat two</p>
+        <p>Chat three</p>
+      
       </CollapsingHeader>
+      <SideBarStack/>
 
     </div>
   );

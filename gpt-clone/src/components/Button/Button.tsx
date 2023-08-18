@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import React, { useState, ReactNode } from 'react';
 
-interface AddButtonProps {
-  text: string;
+interface ButtonProps {
+  buttonText: string;
+  icon?: ReactNode;
   width?: string;
   height?: string;
   color?: string;
@@ -11,7 +11,7 @@ interface AddButtonProps {
   onClick?: () => void;
 }
 
-export const AddButton: React.FC<AddButtonProps> = ({ text, width = '100%', height = '34px', color = '', textColor = 'white', fontSize = '13px', onClick }) => {
+export const Button: React.FC<ButtonProps> = ({ buttonText, icon, width = '100%', height = '34px', color = '', textColor = 'white', fontSize = '13px', onClick }) => {
   const [hover, setHover] = useState(false);
 
   const buttonStyle = {
@@ -33,13 +33,13 @@ export const AddButton: React.FC<AddButtonProps> = ({ text, width = '100%', heig
 
   return (
     <button 
-      className="add-button" 
+      className="button" 
       style={buttonStyle} 
       onClick={onClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <FaPlus /><span style={textStyle}>{text}</span>
+      {icon}<span style={textStyle}>{buttonText}</span>
     </button>
   );
 }
