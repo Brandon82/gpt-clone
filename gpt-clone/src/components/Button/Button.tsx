@@ -1,30 +1,18 @@
 import React, { useState, ReactNode } from 'react';
+import './Button.css';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   buttonText: string;
   icon?: ReactNode;
-  width?: string;
-  height?: string;
-  color?: string;
-  textColor?: string;
-  fontSize?: string;
-  onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ buttonText, icon, width = '100%', height = '34px', color = '', textColor = 'white', fontSize = '13px', onClick }) => {
+export const Button: React.FC<ButtonProps> = ({ buttonText, icon, style, ...props }) => {
   const [hover, setHover] = useState(false);
 
   const buttonStyle = {
-    width: width,
-    height: height,
-    backgroundColor: hover ? '#F8F8F8' : color,
-    color: hover ? 'black' : textColor,
-    fontSize: fontSize,
-    fontWeight: 'bold',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    transition: 'background-color 0.2s ease, color 0.2s ease',
+    ...style,
+    backgroundColor: hover ? '#F8F8F8' : style?.backgroundColor,
+    color: hover ? 'black' : style?.color,
   };
 
   const textStyle = {
@@ -35,9 +23,9 @@ export const Button: React.FC<ButtonProps> = ({ buttonText, icon, width = '100%'
     <button 
       className="button" 
       style={buttonStyle} 
-      onClick={onClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      {...props}
     >
       {icon}<span style={textStyle}>{buttonText}</span>
     </button>

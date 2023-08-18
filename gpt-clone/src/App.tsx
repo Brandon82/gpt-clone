@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import { ChatPane } from './components/ChatPane';
-import { SidePane } from './components/SidePane';
+import { ChatPane } from './panes/ChatPane';
+import { SidePane } from './panes/SidePane';
 
 const App: React.FC = () => {
   return (

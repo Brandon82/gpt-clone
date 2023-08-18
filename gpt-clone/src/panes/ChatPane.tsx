@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GPTContext } from '../state/GPTContext';
-import { TextInput } from './TextInput/TextInput';
+import { TextInput } from '../components/TextInput/TextInput';
 
 // ChatBox Component
 export const ChatPane: React.FC = () => {

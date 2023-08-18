@@ -10,7 +10,6 @@
 
   color: var(--text-color);
   background-color: var(--main-bg-color);
-
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,7 +19,7 @@
 }
 
 div {
-  //border: 1px solid red;
+  border: 1px solid red;
 }
 
 * {
@@ -33,13 +32,17 @@ div {
 }
 
 .sidepane{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-width: 220px;
   margin: 18px 0 14px 0;
   padding: 0 20px 20px 20px;
   border-radius: 10px;
 }
-.sidepane > * {
-  margin-bottom: 0.7rem;
+
+.top-sidepane > * {
+  margin-bottom: 10px;
 }
 
 .chatpane {
@@ -55,12 +58,17 @@ div {
 
 
 
-
-
+.list-button {
+  text-align: left;
+  padding: 10px;
+  // background: transparent;
+}
 
 button {
+  width: 100%;
   border-radius: 4px;
   border: 1px solid transparent;
   /*TO-DO change to var*/
+  color: var(--text-color);
   background-color: cornflowerblue;
 }
