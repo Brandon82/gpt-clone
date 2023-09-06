@@ -1,0 +1,79 @@
+.popup-banner-top-left {
+  top: 0;
+  left: 0;
+  padding: 30px;
+  padding-top: 34px;
+}
+
+.popup-banner-top-right {
+  top: 0;
+  right: 0;
+  padding: 30px;
+  padding-top: 34px;
+}
+
+.popup-banner-bottom-left {
+  bottom: 0;
+  left: 0;
+}
+
+.popup-banner-bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.popup-banner-overlay {
+  max-width: 400px;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-banner-overlay.fadeOut {
+  animation: fadeOut 0.3s ease-in-out;
+}
+
+.popup-banner-container {
+  background-color: #744343;
+  border-radius: 6px;
+}
+
+.popup-banner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  padding-top: 4px;
+  padding-bottom: 0px;
+}
+
+.popup-banner-body {
+  padding: 10px;
+  padding-top: 0px;
+}
+
+.popup-banner-close-button {
+  width: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.popup-banner-close-button:hover {
+  color: #ff0000;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

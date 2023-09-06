@@ -1,0 +1,36 @@
+.text-input {
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    padding: 6px;
+    transition: border-color 0.3s;
+}
+
+.text-input textarea {
+    flex-grow: 1;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 8px 0;
+    margin-left: 4px;
+    margin-right: 8px;
+    color: #e1e1e1;
+    resize: none; /* Optionally disable textarea resizing */
+    max-height: 400px;
+}
+
+.text-input button {
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: rgb(63, 80, 147);
+    font-size: 24px;
+    border-radius: 10%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}

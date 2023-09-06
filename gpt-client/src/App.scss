@@ -1,0 +1,134 @@
+@import '_variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color: $text-color;
+  background-color: $main-bg-color;
+  font-family: $font-family;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+div {
+  /*
+  border: 1px solid red;
+  */
+}
+
+* {
+  /*
+  border: 1px solid red;
+  */
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.sidepane{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 220px;
+  margin: 18px 0 14px 0;
+  padding: 0 20px 20px 20px;
+  border-radius: $border-radius;
+}
+
+.top-sidepane > * {
+  margin-bottom: 10px;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin: 18px 14px 14px 0;
+  padding: 20px;
+  border-radius: $border-radius;
+  background-color: $child-bg-color;
+}
+
+.app-type-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.chat-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chat-pane-bottom {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.message-list {
+  margin-top: 10px;
+}
+
+.message-container {
+  display: flex;
+  background-color: $accent-color;
+  border-radius: $border-radius;
+  align-items: center;
+  margin-bottom: 10px; 
+}
+
+.message {
+  padding: 12px;
+}
+
+.text-input, .text-input textarea {
+  background-color: $accent-color;
+}
+
+.model-selector {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+select {
+  border-radius: $border-radius;
+  padding: 4px;
+  border: none;
+  background-color: $accent-color;
+  color: $text-color;
+}
+
+
+a {
+  text-decoration: none; /* remove the underline from the link */
+  color: inherit; /* use the parent color (or you can set your preferred color) */
+  transition: color 0.15s; /* smooth color transition */
+}
+
+a:hover {
+  color: $hover-color; /* color when hovered, you can change this to any color you prefer */
+}
+
+.return-button {
+  background-color: transparent;
+  width: auto;
+  border: none;
+  margin: 0;
+  padding: 0;
+}

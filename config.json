@@ -1,0 +1,9 @@
+{
+    "keys": {
+        "openAI": ""
+    },
+    "config": {
+        "client-port": "5173",
+        "server-port": "8000"
+    }    
+}
