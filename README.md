@@ -21,13 +21,13 @@ git clone https://github.com/
     - Place your OpenAI API key in config.json
     - Ensure client-port and server-port are the correct ports that the app will/are running on.
 4. Install Python requirements
-    `pip install fastapi uvicorn openai`
+    - `pip install fastapi uvicorn openai`
 5. Navigate to React project directory
-    `cd gpt-client`
+    - `cd gpt-client`
 6. Install packages
-    `npm install`
+    - `npm install`
 7. Start both the React app and Python backend:
-    `npm run start`
+    - `npm run start`
 
 ### To-do
 - Image Generator
