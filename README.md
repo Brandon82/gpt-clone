@@ -8,9 +8,9 @@ gpt-clone was created with:
 ## Getting Started
 
 ### Prerequisites
-Node.js installed
-Python 3.7+ Installed
-OpenAI API key
+- Node.js installed
+- Python 3.7+ Installed
+- OpenAI API key
 
 ### Installation
 1. Clone the repository
@@ -30,3 +30,4 @@ git clone https://github.com/
 `npm run start`
 
 ### To-do
+- Image Generator
