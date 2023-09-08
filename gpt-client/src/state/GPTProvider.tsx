@@ -10,7 +10,8 @@ export const GPTProvider = ({ children }: ProviderProps) => {
       chatHistory: [],
       pane: 'chat' as const,
       chatIndex: 0,
-      model: 'gpt-3.5-turbo' as const
+      model: 'gpt-3.5-turbo' as const,
+      appType: 'chat' as const
     };
 
     const [state, dispatch] = useReducer(GPTReducer, initialState);

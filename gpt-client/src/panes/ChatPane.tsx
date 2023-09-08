@@ -5,20 +5,10 @@ import { MessageList } from '@components/MessageList';
 import { IMessage } from '@state/GPTContext';
 import { usePopupBanner } from '@components/PopupBanner/PopupBannerContext';
 import { PopupBanner } from '@components/PopupBanner/PopupBanner';
-import { ButtonGroup } from '@components/ButtonGroup/ButtonGroup';
-import { Message } from '../components/Message';
+import { WelcomeMessage } from '@components/WelcomeMessage';
+import { isEmptyMessage, sendChatRequestToServer } from '@state/utils';
 
-import config from '@config';
-
-const options = ['Chat', 'Image Generator'];
-
-const WelcomeMessage: React.FC = () => {
-  return (
-    <div className="welcome-message">
-      <Message source={'model'} text={'Welcome to GPT-Clone, enter a message below to begin.'} />
-    </div>
-  );
-}
+const WELCOME_TEXT = 'Welcome to GPT-Clone! I am your AI assistant. I am here to be helpful in any way I can. Feel free to chat with me by typing below.';
 
 export const ChatPane: React.FC = () => {
   const {state, dispatch} = useContext(GPTContext);
@@ -28,11 +18,12 @@ export const ChatPane: React.FC = () => {
     if(message === '') {
       return;
     }
+    // Add the user's message to the chat history list
     const userMessage: IMessage = {
       text: message,
-      source: 'user'
+      source: 'user',
+      type: 'chat'
     };
-
     dispatch({
       type: 'ADD_TO_HISTORY_AT_INDEX',
       index: state.chatIndex,
@@ -40,34 +31,15 @@ export const ChatPane: React.FC = () => {
     });
   
     try {
-      const res = await fetch(`http://localhost:${config.config['server-port']}/v1/chat/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          prompt: message,
-          max_tokens: 150,
-          engine: state.model
-        })
-      });
-  
-      if (res.status === 200) {
-        const data = await res.json();
-  
-        const modelMessage: IMessage = {
-          text: data.message,
-          source: 'model'
-        };
-  
+      const modelMessage = await sendChatRequestToServer(message, state.model);
+      if (modelMessage) {
         dispatch({
           type: 'ADD_TO_HISTORY_AT_INDEX',
           index: state.chatIndex,
           payload: modelMessage
         });
-  
       } else {
-        showPopupBanner('Error', <p>Failed to fetch data from server</p>, 'top-right', 4000);
+        showPopupBanner('Error', <p>No response from the model</p>, 'top-right', 4000);
       }
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -77,44 +49,27 @@ export const ChatPane: React.FC = () => {
       }
     }
   };
-  
+
   const handleModelChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedModel = event.target.value;
-
     dispatch({
       type: 'SET_MODEL',
       payload: selectedModel,
     });
   };
-  
-  const getCurrentChat = () => {
-    return state.chatHistory[state.chatIndex] || [];
-  };
-  
+
+  const showWelcomeMessage = isEmptyMessage(state.chatHistory, state.chatIndex);
+
   return (
-    <div className="pane">
+    <>
       <PopupBanner />
-      
       <div className="chat-content">
-
-        <div className="app-type-selector">
-          <ButtonGroup options={options} />
-        </div>
-
-        {state.chatHistory.length === 0 ? (
-          <WelcomeMessage />
+        {showWelcomeMessage ? (
+          <WelcomeMessage welcomeText={WELCOME_TEXT} />
         ) : (
-          getCurrentChat().length === 0 ? (
-            <p>Enter a message below</p>
-          ) : (
-            <h3>Chat #{state.chatIndex + 1}</h3>
-          )
+          <MessageList />
         )}
-
-
-        <MessageList />
       </div>
-      
       <div className='chat-pane-bottom'>
         <select 
           className='model-selector'
@@ -125,12 +80,11 @@ export const ChatPane: React.FC = () => {
           <option value="gpt-4-32k">GPT-4-32k</option>
           <option value="gpt-3.5-turbo-16k">GPT-3.5-Turbo-16k</option>
         </select>
-
         <TextInput
           onSend={handleSend}
           placeholder="Send a message"
         />
       </div>
-    </div>
+    </>
   );
 }

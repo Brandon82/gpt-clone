@@ -9,7 +9,7 @@ interface AvatarProps {
 export const Avatar: React.FC<AvatarProps> = ({ imageUrl, size = 50 }) => {
   const avatarStyle = {
     width: `${size}px`,
-    height: `${size}px`,
+    height: `100%`,
   };
 
   return (

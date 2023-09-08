@@ -5,15 +5,18 @@ import { Button } from '@components/Button/Button';
 export const SettingsPane: React.FC = () => {
   const {state, dispatch} = useContext(GPTContext);
 
-  const handleReturnToChat = () => {
-    dispatch({ type: 'SET_PANE', payload: 'chat' });
+  const handleReturnToPane = () => {
+    dispatch({ type: 'SET_PANE', payload: state.appType });
   };
 
   return (
     <div className="pane">
         <div>
-          <h3>Settings Pane</h3>
-          <Button buttonText='← Return to Chat' onClick={handleReturnToChat} className="return-button"/>
+          <h3>Settings</h3>
+          <Button buttonText={`← Return to ${state.appType === 'chat' ? 'Chat' : 'Image Generator'}`} onClick={handleReturnToPane} className="return-button"/>
+          <h4>Chat Settings</h4>
+          <h4>Image Generator Settings</h4>
+
         </div>
     </div>
   )

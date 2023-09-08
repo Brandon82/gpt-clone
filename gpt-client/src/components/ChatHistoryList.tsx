@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { GPTContext } from '@state/GPTContext';
 import { StatusGumball } from '@components/StatusGumball/StatusGumball';
+import { getConversationName } from '@state/utils';
 
 const HistoryItem: React.FC<{linkText: string, onClick: () => void, color: string}> = ({linkText, onClick, color}) => {
   return (
@@ -26,18 +27,20 @@ export const ChatHistoryList: React.FC<{}> = () => {
     }
   }, [state.chatHistory]);
 
-  const setChatHistoryToCurrent = (index: number) => {
-    dispatch({ type: 'SET_CHAT_INDEX', payload: index });
+  const handleClick = (index: number) => {
+    dispatch({ type: 'SET_CHAT_INDEX', payload: index });  
+    const appTypeOfSelectedConversation = state.chatHistory[index].appType;
+    dispatch({ type: 'SET_APP_TYPE', payload: appTypeOfSelectedConversation });
   }
-
+  
   return (
     <div>
       {state.chatHistory.map((conversation, index) => (
         <HistoryItem 
           key={index} 
-          linkText={`Chat ${index+1}`} 
-          color={colorList[index] || 'grey'}  // Fallback to grey if for some reason color is not yet set
-          onClick={() => setChatHistoryToCurrent(index)}
+          linkText={getConversationName(conversation, index, state.chatHistory)} 
+          color={colorList[index] || 'grey'}
+          onClick={() => handleClick(index)}
         />
       ))}
     </div>
