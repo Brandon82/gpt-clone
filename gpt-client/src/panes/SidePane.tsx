@@ -15,7 +15,12 @@ export const SidePane: React.FC = () => {
       messages: [],
       appType: state.appType
     };
-    dispatch({ type: 'ADD_TO_HISTORY', payload: newConversation });
+
+    if(state.appType === 'chat'){
+      dispatch({ type: 'ADD_CONVERSATION_TO_HISTORY', payload: newConversation });
+    } else {
+      dispatch({ type: 'ADD_IMAGE_CONVERSATION_TO_HISTORY', payload: newConversation });
+    }
     
     const newIndex = Math.max(0, state.chatHistory.length - 1);
     dispatch({ type: 'SET_CHAT_INDEX', payload: newIndex });

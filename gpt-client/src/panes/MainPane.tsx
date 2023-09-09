@@ -20,9 +20,16 @@ export const MainPane: React.FC = () => {
     });
   };
 
+  const currentConversation = state.appType === 'chat' ? state.chatHistory[state.chatIndex] : state.imageHistory[state.imageIndex];
+
   return (
     <div className="pane">
       <div className="app-type-selector">
+        <h4>
+          {currentConversation ? 
+            `${state.appType === 'chat' ? 'Chat' : 'Image'} - ${state.appType === 'chat' ? state.chatIndex + 1 : state.imageIndex + 1}`
+            : ""}
+        </h4>        
         <ButtonGroup options={options} value={state.appType} onChange={handleAppTypeChange}/>
       </div>
       {state.appType === 'chat' ? <ChatPane /> : state.appType === 'image' ? <ImagePane /> : null}

@@ -1,23 +1,12 @@
 import { IConversation, IMessage } from '@state/GPTContext';
 import config from '@config';
 
-export const getConversationName = (conversation: any, index: number, chatHistory: any[]) => {
-  if (conversation.appType === 'chat') {
-    const chatIndex = chatHistory.slice(0, index + 1).filter(item => item.appType === 'chat').length;
-    return `Chat ${chatIndex}`;
-  } else if (conversation.appType === 'image') {
-    const imageIndex = chatHistory.slice(0, index + 1).filter(item => item.appType === 'image').length;
-    return `Image ${imageIndex}`;
-  }
-  return `Item ${index + 1}`;
-}
-
-export const getCurrentChat = (chatHistory: IConversation[], chatIndex: number): IMessage[] => {
+const getCurrentConversation = (chatHistory: IConversation[], chatIndex: number): IMessage[] => {
   return chatHistory[chatIndex]?.messages || [];
 };
 
 export const isEmptyMessage = (chatHistory: IConversation[], chatIndex: number): boolean => {
-  return chatHistory.length === 0 || getCurrentChat(chatHistory, chatIndex).length === 0;
+  return chatHistory.length === 0 || getCurrentConversation(chatHistory, chatIndex).length === 0;
 };
 
 export const sendChatRequestToServer = async (message: string, model: string): Promise<IMessage | null> => {

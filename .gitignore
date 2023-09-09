@@ -12,7 +12,6 @@ dist
 dist-ssr
 *.local
 
-/config.json
 
 # Editor directories and files
 .vscode/*
@@ -178,3 +177,4 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+config.json

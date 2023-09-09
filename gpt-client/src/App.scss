@@ -24,8 +24,8 @@ div {
 
 * {
   /*
-  border: 1px solid red;
-  */
+  border: 1px solid red;*/
+  
 }
 
 .App {
@@ -65,8 +65,11 @@ div {
 
 .app-type-selector {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 10px;
+}
+
+.app-type-selector h4 {
 }
 
 .chat-content {

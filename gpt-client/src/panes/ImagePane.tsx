@@ -25,8 +25,8 @@ export const ImagePane: React.FC = () => {
       type: 'chat'
     };
     dispatch({
-      type: 'ADD_TO_HISTORY_AT_INDEX',
-      index: state.chatIndex,
+      type: 'ADD_TO_IMAGE_HISTORY_AT_INDEX',
+      index: state.imageIndex,
       payload: userMessage
     });
   
@@ -34,8 +34,8 @@ export const ImagePane: React.FC = () => {
       const modelMessage = await sendImageRequestToServer(message, '1024x1024', 1);
       if (modelMessage) {
         dispatch({
-          type: 'ADD_TO_HISTORY_AT_INDEX',
-          index: state.chatIndex,
+          type: 'ADD_TO_IMAGE_HISTORY_AT_INDEX',
+          index: state.imageIndex,
           payload: modelMessage
         });
       } else {
@@ -50,7 +50,7 @@ export const ImagePane: React.FC = () => {
     }
   };
   
-  const showWelcomeMessage = isEmptyMessage(state.chatHistory, state.chatIndex);
+  const showWelcomeMessage = isEmptyMessage(state.imageHistory, state.imageIndex);
 
   return (
     <>
@@ -62,13 +62,13 @@ export const ImagePane: React.FC = () => {
           <ImageList />
         )}
       </div>
+
       <div className='chat-pane-bottom'>
         <select className="img-size-selector">
           <option value="1024x1024">1024x1024</option>
           <option value="512x512">512x512</option>
           <option value="256x256">256x256</option>
         </select>
-
         <select className="img-num-selector">
           {[...Array(10)].map((_, i) => (
             <option key={i} value={i + 1}>
@@ -76,10 +76,9 @@ export const ImagePane: React.FC = () => {
             </option>
           ))}
         </select>
-
         <TextInput
           onSend={handleSend}
-          placeholder="Provide a desctription of an image"
+          placeholder="Provide a description of an image"
         />
       </div>
     </>

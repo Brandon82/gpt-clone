@@ -6,7 +6,7 @@ import { ImageMessage } from './ImageMessage';
 export const ImageList: React.FC<{}> = () => {
   const {state} = useContext(GPTContext);
 
-  const currentConversation = state.chatHistory[state.chatIndex]?.messages || [];
+  const currentConversation = state.imageHistory[state.imageIndex]?.messages || [];
 
   return (
     <div className="image-list">

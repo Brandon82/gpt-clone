@@ -8,8 +8,10 @@ interface ProviderProps {
 export const GPTProvider = ({ children }: ProviderProps) => {
     const initialState = {
       chatHistory: [],
+      imageHistory: [],
       pane: 'chat' as const,
       chatIndex: 0,
+      imageIndex: 0,
       model: 'gpt-3.5-turbo' as const,
       appType: 'chat' as const
     };

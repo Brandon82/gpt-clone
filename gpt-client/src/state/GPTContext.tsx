@@ -15,9 +15,16 @@ export interface IConversation {
   appType: appType;
 }
 
+export interface IImageConversation {
+  messages: IMessage[];
+  appType: 'image';
+}
+
 interface IState {
   chatHistory: IConversation[];
   chatIndex: number;
+  imageHistory: IImageConversation[];
+  imageIndex: number;
   pane: PaneType;
   model: ModelType;
   appType: appType;
@@ -25,14 +32,18 @@ interface IState {
 
 interface IAction {
   type:
-  | 'ADD_TO_HISTORY'
+  | 'ADD_CONVERSATION_TO_HISTORY'
   | 'ADD_TO_HISTORY_AT_INDEX'
+  | 'ADD_IMAGE_CONVERSATION_TO_HISTORY'
+  | 'ADD_TO_IMAGE_HISTORY_AT_INDEX'
   | 'CLEAR_HISTORY'
+  | 'CLEAR_IMAGE_HISTORY'
   | 'SET_CHAT_INDEX'
+  | 'SET_IMAGE_INDEX'
   | 'SET_PANE'
   | 'SET_MODEL'
   | 'SET_APP_TYPE';
-  payload?: IMessage | IConversation | PaneType | number | string | ModelType | appType;  
+  payload?: IMessage | IConversation | IImageConversation | PaneType | number | string | ModelType | appType;  
   index?: number;
 }
 
@@ -45,7 +56,7 @@ export const GPTContext = React.createContext({} as IContextProps);
 
 export const GPTReducer = (state: IState, action: IAction): IState => {
   switch (action.type) {
-    case 'ADD_TO_HISTORY':
+    case 'ADD_CONVERSATION_TO_HISTORY':
       return {
         ...state,
         chatHistory: [...state.chatHistory, action.payload as IConversation]
@@ -67,20 +78,58 @@ export const GPTReducer = (state: IState, action: IAction): IState => {
             appType: state.appType 
           };
         }
+        return {
+          ...state,
+          chatHistory: updatedChatHistory
+        };
+      }
+      return { ...state };   
+    case 'ADD_IMAGE_CONVERSATION_TO_HISTORY':
       return {
         ...state,
-        chatHistory: updatedChatHistory
-      };
-    }
+        imageHistory: [...state.imageHistory, action.payload as IImageConversation]
+      }
+    case 'ADD_TO_IMAGE_HISTORY_AT_INDEX':
+      if (typeof action.index === 'number' && action.payload && action.index >= 0) {
+        const updatedImageHistory = [...state.imageHistory];
+        const currentConversation = updatedImageHistory[action.index];
+        if (currentConversation) {
+          if (typeof action.payload === 'object' && 'text' in action.payload && 'source' in action.payload) {
+            const lastMessage = currentConversation.messages[currentConversation.messages.length - 1];
+            if (!lastMessage || lastMessage.text !== action.payload.text || lastMessage.source !== action.payload.source) {
+              currentConversation.messages.push(action.payload);
+            }
+          }
+        } else {
+          updatedImageHistory[action.index] = {
+            messages: [action.payload as IMessage], 
+            appType: 'image' 
+          };
+        }
+        return {
+          ...state,
+          imageHistory: updatedImageHistory
+        };
+      }
       return { ...state };   
     case 'CLEAR_HISTORY':  
       return {
         ...state,
         chatHistory: []
       }
+    case 'CLEAR_IMAGE_HISTORY':  
+      return {
+        ...state,
+        imageHistory: []
+      }
     case 'SET_CHAT_INDEX':
       if (typeof action.payload === "number") {
         return { ...state, chatIndex: action.payload };
+      }
+      return { ...state };
+    case 'SET_IMAGE_INDEX':
+      if (typeof action.payload === "number") {
+        return { ...state, imageIndex: action.payload };
       }
       return { ...state };
     case 'SET_PANE':
@@ -100,5 +149,5 @@ export const GPTReducer = (state: IState, action: IAction): IState => {
       return { ...state };
     default:
       return state;
-    }
+  }
 };

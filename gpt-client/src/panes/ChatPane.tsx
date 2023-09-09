@@ -18,7 +18,7 @@ export const ChatPane: React.FC = () => {
     if(message === '') {
       return;
     }
-    // Add the user's message to the chat history list
+
     const userMessage: IMessage = {
       text: message,
       source: 'user',
