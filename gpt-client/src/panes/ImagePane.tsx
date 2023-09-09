@@ -62,20 +62,21 @@ export const ImagePane: React.FC = () => {
           <ImageList />
         )}
       </div>
-
       <div className='chat-pane-bottom'>
-        <select className="img-size-selector">
-          <option value="1024x1024">1024x1024</option>
-          <option value="512x512">512x512</option>
-          <option value="256x256">256x256</option>
-        </select>
-        <select className="img-num-selector">
-          {[...Array(10)].map((_, i) => (
-            <option key={i} value={i + 1}>
-              {i + 1}
-            </option>
-          ))}
-        </select>
+        <div className='chat-pane-selectors'>
+          <select className="img-size-selector">
+            <option value="1024x1024">1024x1024</option>
+            <option value="512x512">512x512</option>
+            <option value="256x256">256x256</option>
+          </select>
+          <select className="img-num-selector">
+            {[...Array(10)].map((_, i) => (
+              <option key={i} value={i + 1}>
+                {i + 1}
+              </option>
+            ))}
+          </select>
+        </div>
         <TextInput
           onSend={handleSend}
           placeholder="Provide a description of an image"

@@ -20,7 +20,9 @@ export const Message: React.FC<MessageProps> = ({ source, text }) => {
 
   return (
     <div className="message-container">
-      <Avatar imageUrl={getAvatarSource(source)} size={source === 'model' ? 34 : 34} />
+      <div className="msg-avatar-container">
+        <Avatar imageUrl={getAvatarSource(source)} size={source === 'model' ? 34 : 34} />
+      </div>
       <div className="message">
         <ReactMarkdown children={text || ''} />
       </div>

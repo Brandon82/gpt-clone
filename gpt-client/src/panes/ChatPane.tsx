@@ -71,15 +71,14 @@ export const ChatPane: React.FC = () => {
         )}
       </div>
       <div className='chat-pane-bottom'>
-        <select 
-          className='model-selector'
-          onChange={handleModelChange}
-        >
-          <option value="gpt-3.5-turbo">GPT-3.5-Turbo</option> 
-          <option value="gpt-4">GPT-4</option>
-          <option value="gpt-4-32k">GPT-4-32k</option>
-          <option value="gpt-3.5-turbo-16k">GPT-3.5-Turbo-16k</option>
-        </select>
+        <div className='chat-pane-selectors'>
+          <select className='model-selector' onChange={handleModelChange}>
+            <option value="gpt-3.5-turbo">GPT-3.5-Turbo</option> 
+            <option value="gpt-4">GPT-4</option>
+            <option value="gpt-4-32k">GPT-4-32k</option>
+            <option value="gpt-3.5-turbo-16k">GPT-3.5-Turbo-16k</option>
+          </select>
+        </div>
         <TextInput
           onSend={handleSend}
           placeholder="Send a message"

@@ -29,8 +29,10 @@ export const MainPane: React.FC = () => {
           {currentConversation ? 
             `${state.appType === 'chat' ? 'Chat' : 'Image'} - ${state.appType === 'chat' ? state.chatIndex + 1 : state.imageIndex + 1}`
             : ""}
-        </h4>        
-        <ButtonGroup options={options} value={state.appType} onChange={handleAppTypeChange}/>
+        </h4>      
+        <div className="app-selector-middle">  
+          <ButtonGroup options={options} value={state.appType} onChange={handleAppTypeChange}/>
+        </div>
       </div>
       {state.appType === 'chat' ? <ChatPane /> : state.appType === 'image' ? <ImagePane /> : null}
     </div>

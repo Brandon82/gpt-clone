@@ -24,8 +24,8 @@ div {
 
 * {
   /*
-  border: 1px solid red;*/
-  
+  border: 1px solid red;
+  */
 }
 
 .App {
@@ -70,6 +70,12 @@ div {
 }
 
 .app-type-selector h4 {
+  position: absolute;
+}
+
+.app-selector-middle {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .chat-content {
@@ -96,6 +102,11 @@ div {
   margin-bottom: 10px; 
 }
 
+.msg-avatar-container{
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
 .message {
   padding: 10px;
 }
@@ -104,9 +115,11 @@ div {
   background-color: $accent-color;
 }
 
-.model-selector {
-  width: 120px;
+.chat-pane-selectors {
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
 
 select {
@@ -117,15 +130,14 @@ select {
   color: $text-color;
 }
 
-
 a {
-  text-decoration: none; /* remove the underline from the link */
-  color: inherit; /* use the parent color (or you can set your preferred color) */
-  transition: color 0.15s; /* smooth color transition */
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.15s;
 }
 
 a:hover {
-  color: $hover-color; /* color when hovered, you can change this to any color you prefer */
+  color: $hover-color;
 }
 
 .return-button {

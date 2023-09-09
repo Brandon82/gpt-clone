@@ -28,7 +28,7 @@ export const TextInput: React.FC<TextInputProps> = ({ placeholder = '', onSend }
   useEffect(() => {
     const textarea = textAreaRef.current;
     if (textarea) {
-      textarea.style.height = 'auto';
+      textarea.style.height = '20px';
       textarea.style.height = `${textarea.scrollHeight}px`;
     }
   }, [text]);
