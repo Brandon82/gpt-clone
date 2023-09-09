@@ -1,6 +1,6 @@
 # gpt-clone
 
-gpt-clone is a React app that provides a user-friendly interface to interact with OpenAI's chat models like GPT-4. The goal of this project is to get the most functionality out of OpenAI's API.
+gpt-clone is a React app that provides a user-friendly interface to interact with OpenAI's chat models like GPT-4. The goal of this project is to get the maximum functionality out of OpenAI's API.
 
 ### Technical Details
 gpt-clone is built using:
