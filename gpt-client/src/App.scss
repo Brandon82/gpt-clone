@@ -16,18 +16,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-div {
-  /*
-  border: 1px solid red;
-  */
-}
-
-* {
-  /*
-  border: 1px solid red;
-  */
-}
-
 .App {
   display: flex;
   height: 100vh;
@@ -44,12 +32,15 @@ div {
 }
 
 .top-sidepane > * {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .history-item {
   display: flex;
   align-items: center;
+  color: rgb(133, 133, 133);
+  margin-bottom: 6px;
+  font-size: 14px;
 }
 
 .pane {
@@ -146,4 +137,16 @@ a:hover {
   border: none;
   margin: 0;
   padding: 0;
+}
+
+div {
+  /*
+  border: 1px solid red;
+  */
+}
+
+* {
+  /*
+  border: 1px solid red;
+  */
 }
