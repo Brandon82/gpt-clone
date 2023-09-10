@@ -2,10 +2,10 @@
 
 gpt-clone is a React app that provides a user-friendly interface to interact with OpenAI's chat models like GPT-4. The goal of this project is to get the maximum functionality out of OpenAI's API.
 
-### Technical Details
-gpt-clone is built using:
 - **Frontend**: React with TypeScript.
 - **Backend**: FastAPI in Python.
+
+![UI Image](https://i.imgur.com/KPAsxOx.png)
 
 ## Getting Started
 
@@ -43,9 +43,5 @@ gpt-clone is built using:
    npm run start
    ```
 
-### TO-DO:
-- Image Generator functionality.
-
 ### License
 This project is licensed under the terms of the MIT license. See [LICENSE](LICENSE) for more details.
-
