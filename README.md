@@ -42,6 +42,11 @@ gpt-clone is a React app that provides a user-friendly interface to interact wit
    ```bash
    npm run start
    ```
+### Additional Commands
+- Run Jest unit tests:
+   ```bash
+   npm test
+   ```
 
 ### License
 This project is licensed under the terms of the MIT license. See [LICENSE](LICENSE) for more details.
