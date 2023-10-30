@@ -34,7 +34,7 @@ export const SidePane: React.FC = () => {
     <div className="sidepane">
       <div className="top-sidepane">
         <h2>GPT-Clone</h2>
-        <Button buttonText={getButtonText()} icon={<FaPlus />} onClick={startNewConversation} />
+        <Button buttonText={getButtonText()} onClick={startNewConversation} />
         <CollapsingHeader title="History" isCollapsed={false}>
           <ChatHistoryList/>
         </CollapsingHeader>

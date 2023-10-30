@@ -5,8 +5,8 @@ import { StatusGumball } from '@components/StatusGumball/StatusGumball';
 const HistoryItem: React.FC<{linkText: string, onClick: () => void, color: string}> = ({linkText, onClick, color}) => {
   return (
     <span className='history-item' onClick={onClick}>
-      <StatusGumball size={14} color={color}/> 
-      <a href="#" onClick={(e) => {
+      <StatusGumball size={18} color={color}/> 
+      <a href="#" style={{ marginLeft: '8px'}} onClick={(e) => {
         e.preventDefault(); 
         onClick();
       }}>{linkText}</a>
@@ -37,7 +37,6 @@ export const ChatHistoryList: React.FC<{}> = () => {
     const appTypeOfSelectedConversation = type;
     dispatch({ type: 'SET_APP_TYPE', payload: appTypeOfSelectedConversation });
   }
-  
   
   return (
     <div>
