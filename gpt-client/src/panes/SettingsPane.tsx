@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { GPTContext } from '@state/GPTContext';
 import { Button } from '@components/Button/Button';
+import { ChatSettingBox } from '@components/ChatSettingBox';
+import { ImageSettingBox } from '@components/ImageSettingBox';
 
 export const SettingsPane: React.FC = () => {
   const {state, dispatch} = useContext(GPTContext);
@@ -15,8 +17,9 @@ export const SettingsPane: React.FC = () => {
           <h3>Settings</h3>
           <Button buttonText={`← Return to ${state.appType === 'chat' ? 'Chat' : 'Image Generator'}`} onClick={handleReturnToPane} className="return-button"/>
           <h4>Chat Settings</h4>
+          <ChatSettingBox/>
           <h4>Image Generator Settings</h4>
-
+          <ImageSettingBox/>
         </div>
     </div>
   )

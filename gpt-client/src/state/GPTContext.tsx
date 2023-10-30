@@ -28,6 +28,7 @@ interface IState {
   pane: PaneType;
   model: ModelType;
   appType: appType;
+  maxTokens: number;
 }
 
 interface IAction {
@@ -42,7 +43,8 @@ interface IAction {
   | 'SET_IMAGE_INDEX'
   | 'SET_PANE'
   | 'SET_MODEL'
-  | 'SET_APP_TYPE';
+  | 'SET_APP_TYPE'
+  | 'SET_MAX_TOKENS';
   payload?: IMessage | IConversation | IImageConversation | PaneType | number | string | ModelType | appType;  
   index?: number;
 }
@@ -145,6 +147,11 @@ export const GPTReducer = (state: IState, action: IAction): IState => {
     case 'SET_APP_TYPE':
       if (typeof action.payload === "string") {
         return { ...state, appType: action.payload as appType };
+      }
+      return { ...state };
+    case 'SET_MAX_TOKENS':
+      if (typeof action.payload === "number") {
+        return { ...state, maxTokens: action.payload };
       }
       return { ...state };
     default:
