@@ -4,7 +4,10 @@ import { ButtonGroup } from '@components/ButtonGroup/ButtonGroup';
 import { ChatPane } from './ChatPane';
 import { ImagePane } from './ImagePane';
 
-const options = ['chat', 'image'];
+const options = [
+  { value: 'chat', name: 'Chat' },
+  { value: 'image', name: 'Image Generator' }
+];
 
 export const MainPane: React.FC = () => {
   const { state, dispatch } = useContext(GPTContext);

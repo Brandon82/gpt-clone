@@ -1,8 +1,13 @@
 import React from 'react';
 import './ButtonGroup.scss';
 
+interface Option {
+  value: string;
+  name: string;
+}
+
 interface ButtonGroupProps {
-  options: string[];
+  options: Option[];
   value: string;
   onChange?: (value: string) => void;
 }
@@ -16,13 +21,13 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({ options, value, onChan
 
   return (
     <div className="button-group">
-      {options.map(option => (
+      {options.map(({ value: optionValue, name }) => (
         <button
-          key={option}
-          className={`button button-group-button ${option === value ? 'selected' : ''}`} // Use value prop instead of selected state
-          onClick={() => handleButtonClick(option)}
+          key={optionValue}
+          className={`button button-group-button ${optionValue === value ? 'selected' : ''}`}
+          onClick={() => handleButtonClick(optionValue)}
         >
-          {option}
+          {name}
         </button>
       ))}
     </div>
