@@ -2,6 +2,7 @@ import React from 'react';
 
 type appType = 'chat' | 'image';
 type PaneType = 'chat' | 'image' | 'settings';
+
 export type ModelType = 'gpt-3.5-turbo' | 'gpt-4' | 'gpt-4-32k' | 'gpt-3.5-turbo-16k';
 
 export interface IMessage {
@@ -29,6 +30,7 @@ interface IState {
   model: ModelType;
   appType: appType;
   maxTokens: number;
+  instructionText: string;
 }
 
 interface IAction {
@@ -44,7 +46,8 @@ interface IAction {
   | 'SET_PANE'
   | 'SET_MODEL'
   | 'SET_APP_TYPE'
-  | 'SET_MAX_TOKENS';
+  | 'SET_MAX_TOKENS'
+  | 'SET_INSTRUCTION_TEXT';
   payload?: IMessage | IConversation | IImageConversation | PaneType | number | string | ModelType | appType;  
   index?: number;
 }
@@ -152,6 +155,11 @@ export const GPTReducer = (state: IState, action: IAction): IState => {
     case 'SET_MAX_TOKENS':
       if (typeof action.payload === "number") {
         return { ...state, maxTokens: action.payload };
+      }
+      return { ...state };
+    case 'SET_INSTRUCTION_TEXT':
+      if (typeof action.payload === "string") {
+        return { ...state, instructionText: action.payload };
       }
       return { ...state };
     default:

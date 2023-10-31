@@ -2,24 +2,27 @@ import React, { useState, KeyboardEvent, useRef, useEffect } from 'react';
 import { FiSend } from 'react-icons/fi';
 import './TextInput.scss';
 
-interface TextInputProps {
+interface TextInputProps extends React.HTMLAttributes<HTMLDivElement> {
   placeholder?: string;
   onSend?: (text: string) => void;
+  autoUpdate?: boolean;
 }
 
-export const TextInput: React.FC<TextInputProps> = ({ placeholder = '', onSend }) => {
+export const TextInput: React.FC<TextInputProps> = ({ placeholder = '', onSend, autoUpdate = false, ...rest }) => {
   const [text, setText] = useState('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleSend = () => {
     if (onSend) {
       onSend(text);
+      if (!autoUpdate) {
+        setText('');
+      }
     }
-    setText('');
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey && !autoUpdate) {
       e.preventDefault();
       handleSend();
     }
@@ -33,8 +36,14 @@ export const TextInput: React.FC<TextInputProps> = ({ placeholder = '', onSend }
     }
   }, [text]);
 
+  useEffect(() => {
+    if (autoUpdate && onSend) {
+      onSend(text);
+    }
+  }, [text, onSend, autoUpdate]);
+
   return (
-    <div className="text-input">
+    <div className="text-input" {...rest}>
       <textarea
         ref={textAreaRef}
         placeholder={placeholder}
@@ -42,9 +51,11 @@ export const TextInput: React.FC<TextInputProps> = ({ placeholder = '', onSend }
         onChange={(e) => setText(e.target.value)}
         onKeyDown={handleKeyDown}
       />
-      <button onClick={handleSend}>
-        <FiSend />
-      </button>
+      {!autoUpdate && (
+        <button onClick={handleSend}>
+          <FiSend />
+        </button>
+      )}
     </div>
   );
 };

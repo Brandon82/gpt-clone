@@ -10,6 +10,7 @@ export default defineConfig({
       '@components': resolve(__dirname, 'src/components'),
       '@state': resolve(__dirname, 'src/state'),
       '@config': resolve(__dirname, '../config.json'),
+      '@utils': resolve(__dirname, 'src/utils'),
     },
   },
 })

@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import './Button.scss';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -6,11 +6,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: ReactNode;
 }
 
-export const Button: React.FC<ButtonProps> = ({ buttonText, icon, ...props }) => {
+export const Button: React.FC<ButtonProps> = ({ buttonText, icon, ...rest }) => {
   return (
     <button 
       className="button"
-      {...props}
+      {...rest}
     >
       {icon}<span>{buttonText}</span>
     </button>
