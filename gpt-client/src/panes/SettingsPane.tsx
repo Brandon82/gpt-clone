@@ -14,8 +14,8 @@ export const SettingsPane: React.FC = () => {
   return (
     <div className="pane">
         <div>
-          <h3>Settings</h3>
           <Button buttonText={`← Return to ${state.appType === 'chat' ? 'Chat' : 'Image Generator'}`} onClick={handleReturnToPane} className="return-button"/>
+          <h3>Settings</h3>
           <h4>Chat Settings</h4>
           <ChatSettingBox/>
           <h4>Image Generator Settings</h4>
