@@ -11,6 +11,7 @@ export default defineConfig({
       '@state': resolve(__dirname, 'src/state'),
       '@config': resolve(__dirname, '../config.json'),
       '@utils': resolve(__dirname, 'src/utils'),
+      '@css_vars': resolve(__dirname, 'src/_variables.scss'),
     },
   },
 })

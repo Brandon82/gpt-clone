@@ -1,0 +1,17 @@
+.num-input {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 12px;
+    transition: border-color 0.3s;
+}
+
+.num-input textarea {
+    flex-grow: 1;
+    outline: none;
+    border: none;
+    font-size: 17px;
+    margin-right: 8px;
+    color: #e1e1e1;
+    resize: none;
+}
