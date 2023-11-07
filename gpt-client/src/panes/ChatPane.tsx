@@ -73,10 +73,12 @@ export const ChatPane: React.FC = () => {
       <div className='chat-pane-bottom'>
         <div className='chat-pane-selectors'>
           <select className='model-selector' onChange={handleModelChange}>
-            <option value="gpt-3.5-turbo">GPT-3.5-Turbo</option> 
+            <option value="gpt-3.5-turbo">GPT-3.5T</option> 
+            <option value="gpt-3.5-turbo-16k">GPT-3.5T 16k</option>
+            <option value="gpt-3.5-turbo-1106">GPT-3.5T Updated</option>
             <option value="gpt-4">GPT-4</option>
-            <option value="gpt-4-32k">GPT-4-32k</option>
-            <option value="gpt-3.5-turbo-16k">GPT-3.5-Turbo-16k</option>
+            <option value="gpt-4-32k">GPT-4 32k</option>
+            <option value="gpt-4-1106-preview">GPT-4 Turbo</option>
           </select>
         </div>
         <TextInput

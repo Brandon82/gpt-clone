@@ -18,7 +18,7 @@ export const sendChatRequestToServer = async (message: string, model: string): P
       },
       body: JSON.stringify({
         prompt: message,
-        max_tokens: 150,
+        max_tokens: 1000,
         engine: model
       })
     });
