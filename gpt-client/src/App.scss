@@ -48,9 +48,10 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  margin: 18px 14px 14px 0;
+  margin: 0;
   padding: 20px;
-  border-radius: $border-radius;
+  border-radius: 0;
+  //border-radius: $border-radius;
   background-color: $child-bg-color;
 }
 
