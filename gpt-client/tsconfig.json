@@ -20,9 +20,9 @@
     "baseUrl": "./src",
 
     "paths": {
+      "@config": ["../config.json"],
       "@components/*": ["components/*"],
-      "@state/*": ["state/*"],
-      "@config": ["../config.json"]
+      "@state/*": ["state/*"]
     }
   },
   "include": ["src"],

@@ -4,7 +4,6 @@ import { Message } from './Message';
 
 export const MessageList: React.FC<{}> = () => {
   const {state} = useContext(GPTContext);
-
   const currentConversation = state.chatHistory[state.chatIndex]?.messages || [];
 
   return (

@@ -14,7 +14,7 @@ interface NumInputProps extends React.HTMLAttributes<HTMLDivElement> {
 export const NumInput: React.FC<NumInputProps> = ({ 
   placeholder = '', 
   onUpdate,  
-  numType = 'integers', 
+  numType = 'integer', 
   minValue,
   maxValue,
   ...rest 
@@ -24,9 +24,9 @@ export const NumInput: React.FC<NumInputProps> = ({
 
   const validateInput = (value: string): boolean => {
     switch(numType) {
-      case 'integers':
+      case 'integer':
         return /^[+-]?\d+$/.test(value);
-      case 'floats':
+      case 'float':
         const floatValue = parseFloat(value);
         return !isNaN(floatValue) && (!minValue || floatValue >= minValue) && (!maxValue || floatValue <= maxValue);
     }

@@ -4,7 +4,6 @@ import { Button } from '@components/Button/Button';
 import { CollapsingHeader } from '@components/CollapsingHeader/CollapsingHeader';
 import { SideBarStack } from '@components/SideBarStack';
 import { ChatHistoryList } from '@components/ChatHistoryList';
-import { FaPlus } from 'react-icons/fa';
 
 // SidePane Component
 export const SidePane: React.FC = () => {

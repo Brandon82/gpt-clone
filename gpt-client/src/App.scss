@@ -49,9 +49,8 @@
   justify-content: space-between;
   width: 100%;
   margin: 0;
-  padding: 20px;
+  padding: 20px 0 20px 20px;
   border-radius: 0;
-  //border-radius: $border-radius;
   background-color: $child-bg-color;
 }
 
@@ -84,6 +83,7 @@
 
 .message-list {
   margin-top: 10px;
+  padding-left: 10px;
 }
 
 .message-container {
@@ -92,11 +92,15 @@
   border-radius: $border-radius;
   align-items: center;
   margin-bottom: 10px; 
+  max-width: 700px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .msg-avatar-container{
   flex-shrink: 0;
   align-self: flex-start;
+  margin: 6px 0 6px 4px;
 }
 
 .message {
@@ -160,7 +164,27 @@ a:hover {
   height: 10px;
 }
 
+.settings_title_text {
+  margin-top: 10px;
+}
 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
 
 div {
   /*

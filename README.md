@@ -1,11 +1,11 @@
 # gpt-clone
 
-gpt-clone is a React app that provides a user-friendly interface to interact with OpenAI's chat models like GPT-4. The goal of this project is to get the maximum functionality out of OpenAI's API.
+gpt-clone is a React/Vite app that provides a user-friendly interface to interact with OpenAI's chat models like GPT-4.
 
 - **Frontend**: React with TypeScript.
 - **Backend**: FastAPI in Python.
 
-![UI Image](https://i.imgur.com/KPAsxOx.png)
+![UI Image](https://i.imgur.com/T2MY86r.png)
 
 ## Getting Started
 
@@ -28,7 +28,7 @@ gpt-clone is a React app that provides a user-friendly interface to interact wit
    - Ensure `client-port` and `server-port` are the correct ports that the app will/are running on.
 4. Install Python requirements:
    ```bash
-   pip install fastapi uvicorn openai
+   pip install fastapi==0.96.1 uvicorn==0.23.2 openai==0.27.10
    ```
 5. Navigate to React project directory:
    ```bash

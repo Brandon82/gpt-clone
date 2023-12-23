@@ -35,16 +35,9 @@ export const ChatSettingBox: React.FC<{}> = () => {
 
   return (
     <div className="chat-settings">
-        <TextInput
-          onSend={handleChatInstructionChange}
-          autoUpdate={true}
-          placeholder='Enter chat instruction'
-          className='text-input chat-settings__text-input'
-        />
-
         <NumInput 
           placeholder="Max tokens" 
-          numType="integer"  // Updated the prop value
+          numType="integer"
           onUpdate={handleMaxTokenChange}
           className='text-input chat-settings__text-input'
         />

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Avatar } from './Avatar/Avatar';
 import ReactMarkdown from 'react-markdown';
+import modelAvatar from '../assets/modelpfp.png';
+import userAvatar from '../assets/userpfp.png';
 
 interface MessageProps {
   source: string;
@@ -10,10 +12,10 @@ interface MessageProps {
 export const Message: React.FC<MessageProps> = ({ source, text }) => {
   const getAvatarSource = (source: string) => {
     if (source === 'model') {
-      return 'https://dwglogo.com/wp-content/uploads/2019/03/1600px-OpenAI_logo-1024x705.png';
+      return modelAvatar;
     }
     if (source === 'user') {
-      return 'https://cdn.pixabay.com/photo/2021/07/25/08/03/account-6491185_1280.png';
+      return userAvatar;
     }
     return '';
   };
