@@ -3,7 +3,10 @@ from models.chat_input import ChatInput
 from models.chat_response import ChatResponse
 from models.image_input import ImageInput
 from models.image_response import ImageResponse
-import openai
+from openai import OpenAI
+
+client = OpenAI(api_key=api_key,
+api_key=api_key)
 import json
 import os
 
@@ -20,21 +23,18 @@ api_key = config['keys']['openAI']
 @router.post("/chat/", response_model=ChatResponse)
 async def chat(chat_input: ChatInput):
     try:
-        openai.api_key = api_key
-        response = openai.ChatCompletion.create(
-            model=chat_input.engine,
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are a helpful assistant."
-                },
-                {
-                    "role": "user",
-                    "content": chat_input.prompt
-                }
-            ],
-            max_tokens=chat_input.max_tokens
-        )
+        response = client.chat.completions.create(model=chat_input.engine,
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a helpful assistant."
+            },
+            {
+                "role": "user",
+                "content": chat_input.prompt
+            }
+        ],
+        max_tokens=chat_input.max_tokens)
         message = response['choices'][0]['message']['content']
         print(f"Chat request: {chat_input.dict()}, Response: {message}")
         return {"message": message}
@@ -45,13 +45,10 @@ async def chat(chat_input: ChatInput):
 @router.post("/image/", response_model=ImageResponse)
 async def generate_image(image_input: ImageInput):
     try:
-        openai.api_key = api_key
-        response = openai.Image.create(
-            prompt=image_input.prompt,
-            model=image_input.model,
-            n=image_input.num_images,
-            size=image_input.image_size
-        )
+        response = client.images.generate(prompt=image_input.prompt,
+        model=image_input.model,
+        n=image_input.num_images,
+        size=image_input.image_size)
         image_url = response['data'][0]['url']
         print(f"Image request: {image_input.dict()}, Response URL: {image_url}")
         return {"url": image_url}
