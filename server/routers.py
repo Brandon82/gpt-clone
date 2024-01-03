@@ -10,7 +10,7 @@ import os
 router = APIRouter()
 
 file_path = os.path.join(os.path.dirname(__file__), '..', 'config.json')
-print(f"Attempting to open config file at: {file_path}")  # Debug line
+print(f"Attempting to open config file at: {file_path}")
 
 with open(file_path) as f:
     config = json.load(f)
@@ -48,6 +48,7 @@ async def generate_image(image_input: ImageInput):
         openai.api_key = api_key
         response = openai.Image.create(
             prompt=image_input.prompt,
+            model=image_input.model,
             n=image_input.num_images,
             size=image_input.image_size
         )

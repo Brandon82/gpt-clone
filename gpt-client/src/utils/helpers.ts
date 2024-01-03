@@ -9,7 +9,7 @@ export const isEmptyMessage = (chatHistory: IConversation[], chatIndex: number):
   return chatHistory.length === 0 || getCurrentConversation(chatHistory, chatIndex).length === 0;
 };
 
-export const sendChatRequestToServer = async (message: string, model: string): Promise<IMessage | null> => {
+export const sendChatRequestToServer = async (message: string, model: string, maxTokens: number): Promise<IMessage | null> => {
   try {
     const res = await fetch(`http://localhost:${config.config['server-port']}/v1/chat/`, {
       method: 'POST',
@@ -18,7 +18,7 @@ export const sendChatRequestToServer = async (message: string, model: string): P
       },
       body: JSON.stringify({
         prompt: message,
-        max_tokens: 555,
+        max_tokens: maxTokens,
         engine: model
       })
     });
@@ -39,7 +39,7 @@ export const sendChatRequestToServer = async (message: string, model: string): P
   }
 };
 
-export const sendImageRequestToServer = async (message: string, imgSize: string, numImages: number): Promise<IMessage | null> => {
+export const sendImageRequestToServer = async (message: string, imgSize: string, numImages: number, imageModel: string): Promise<IMessage | null> => {
   try {
     const res = await fetch(`http://localhost:${config.config['server-port']}/v1/image/`, {
       method: 'POST',
@@ -48,6 +48,7 @@ export const sendImageRequestToServer = async (message: string, imgSize: string,
       },
       body: JSON.stringify({
         prompt: message,
+        model: imageModel,
         image_size: imgSize,
         num_images: numImages
       })

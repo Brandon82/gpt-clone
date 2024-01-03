@@ -1,10 +1,5 @@
 @import '_variables.scss';
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 :root {
   color: $text-color;
   background-color: $main-bg-color;
@@ -16,16 +11,23 @@
   -webkit-text-size-adjust: 100%;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   display: flex;
   height: 100vh;
 }
 
-.sidepane{
+// Sidebar
+.sidepane {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-width: 220px;
+  max-width: 220px;
   margin: 18px 0 14px 0;
   padding: 0 20px 20px 20px;
   border-radius: $border-radius;
@@ -40,9 +42,15 @@
   align-items: center;
   color: rgb(133, 133, 133);
   margin-bottom: 6px;
-  font-size: 14px;
 }
 
+.history-item a {
+  text-decoration: none;
+  margin-left: 8px;
+  font-size: 17px;
+}
+
+// Main Pane
 .pane {
   display: flex;
   flex-direction: column;
@@ -57,6 +65,7 @@
 .app-type-selector {
   display: flex;
   justify-content: space-between;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
@@ -67,6 +76,7 @@
 .app-selector-middle {
   margin-left: auto;
   margin-right: auto;
+  width: 300px;
 }
 
 .chat-content {
@@ -79,11 +89,7 @@
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.message-list {
-  margin-top: 10px;
-  padding-left: 10px;
+  margin-top: 14px;
 }
 
 .message-container {
@@ -104,7 +110,11 @@
 }
 
 .message {
-  padding: 10px;
+  padding: 4px;
+  padding-left: 10px;
+  overflow: hidden;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
 }
 
 .text-input, .text-input textarea {
@@ -118,44 +128,22 @@
   gap: 8px;
 }
 
-select {
-  border-radius: $border-radius;
-  padding: 4px;
-  border: none;
-  background-color: $accent-color;
-  color: $text-color;
-}
+.code-block {
+  background-color: #282933 !important;
+  padding: 10px !important;
+  margin: 8px 8px 8px 0px !important;
+  border-radius: $border-radius !important;
 
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.15s;
-  font-size: 17px;
-}
-
-a:hover {
-  color: $hover-color;
-}
-
-.return-button {
-  background-color: transparent;
-  color: $text-color;
-  width: auto;
-  border: none;
-  margin: 0;
-  padding: 8px 8px 8px 0px;
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    color: cornflowerblue;
-    cursor: pointer; 
+  &::-webkit-scrollbar-thumb {
+    background-color: #48495a;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #48495a;
   }
 }
 
+// Settings Pane
 .chat-settings {
-  padding: 10px 0 10px 0;
-}
-
-.image-settings {
   padding: 10px 0 10px 0;
 }
 
@@ -168,6 +156,7 @@ a:hover {
   margin-top: 10px;
 }
 
+// Scrollbar Styling
 ::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -184,16 +173,4 @@ a:hover {
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
-}
-
-div {
-  /*
-  border: 1px solid red;
-  */
-}
-
-* {
-  /*
-  border: 1px solid red;
-  */
 }

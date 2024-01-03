@@ -22,7 +22,9 @@
     "paths": {
       "@config": ["../config.json"],
       "@components/*": ["components/*"],
-      "@state/*": ["state/*"]
+      "@state/*": ["state/*"],
+      "@utils/*": ["utils/*"],
+      "@services/*": ["services/*"]
     }
   },
   "include": ["src"],

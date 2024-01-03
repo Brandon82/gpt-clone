@@ -7,7 +7,7 @@ interface WelcomeMessageProps {
 export const WelcomeMessage: React.FC<WelcomeMessageProps> = ({ welcomeText }) => {
     return (
         <div className="welcome-message">
-            <Message source={'model'} text={welcomeText} />
+            <Message source={'model'} text={welcomeText} type={'chat'} />
         </div>
     );
 }

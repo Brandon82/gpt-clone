@@ -9,7 +9,7 @@ export const MessageList: React.FC<{}> = () => {
   return (
     <div className="message-list">
       {currentConversation.map((message, index) => (
-        <Message key={index} source={message.source} text={message.text || ''} />
+        <Message key={index} source={message.source} text={message.text || ''} type={message.type} />
       ))}
     </div>
   );
